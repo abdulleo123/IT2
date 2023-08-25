@@ -156,3 +156,32 @@ if tall%2 == 0:
 else:
     print("Tallet er ett oddetall")
 '''
+
+
+'''
+except ValueError:
+    print("Skriv ett tall: ")
+'''
+
+'''
+for i in range(1, 31):
+    print(i)
+'''
+
+
+'''
+for i in range(1, 101, 2):
+    print(i)
+'''
+
+
+'''
+for i in range(1, 11):
+    print(i * 5)
+'''
+
+
+'''
+for i in range(1, 10, 2):
+    print(i)
+'''
