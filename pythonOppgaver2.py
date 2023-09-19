@@ -147,4 +147,54 @@ for key, value in værdata1.items():
 # Oppgave 3
 
 
-  
+'''
+vaerdata = {
+  "lat":59.97,"lon":10.78,"timezone":"Europe/Oslo","timezone_offset":7200,"daily": [
+    { 
+      "dt":1649329200,
+      "sunrise":1649305463,
+      "sunset":1649355199,
+      "moonrise":1649311440,
+      "moonset":1649295060,
+      "moon_phase":0.19,
+      "temp":{"day":277.51,"min":271.29,"max":277.51,"night":271.8,"eve":273.29,"morn":271.79},
+      "feels_like":{"day":273.59,"night":265.92,"eve":268.02,"morn":269.78},
+      "pressure":956,
+      "humidity":46,
+      "dew_point":267.62,
+      "wind_speed":6.13,
+      "wind_deg":19,
+      "wind_gust":13.63,
+      "weather":[{"id":601,"main":"Snow","description":"snow","icon":"13d"}],
+      "clouds":100,"pop":0.89,"snow":1.65,"uvi":1.57
+    },
+    {
+      "dt":1649415600,
+      "sunrise":1649391683,
+      "sunset":1649441745,
+      "moonrise":1649400060,
+      "moonset":1649385480,
+      "moon_phase":0.22,
+      "temp":{"day":274.79,"min":270.59,"max":275.91,"night":271.85,"eve":274.38,"morn":270.83},
+      "feels_like":{"day":269.76,"night":268.08,"eve":270.43,"morn":264.98},
+      "pressure":978,
+      "humidity":47,
+      "dew_point":264.4,
+      "wind_speed":6.47,
+      "wind_deg":17,
+      "wind_gust":13.84,
+      "weather":[{"id":601,"main":"Snow","description":"snow","icon":"13d"}],
+      "clouds":100,"pop":0.93,"snow":3.25,"uvi":1.52
+    }
+    
+  ]
+}
+
+# print(vaerdata)
+
+for dag in vaerdata["daily"]:
+  dato = dag["dt"]
+  temperatur = dag["temp"]["day"]
+  print(f"Varsel for {dato}. Temperatur: {temperatur}.")
+
+'''
