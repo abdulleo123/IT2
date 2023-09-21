@@ -1,0 +1,136 @@
+from random import randint
+import math
+
+'''
+class Terning:
+    def __init__(self, antallSider):
+        self.antallSider = antallSider
+
+    def kast(self):
+        return randint(1, self.antallSider)
+
+
+antallSider = int(input("Skriv inn antall sider terningen skal ha: "))
+
+minTerning = Terning(antallSider)
+
+resultat = minTerning.kast()
+print("Resultatet av terningkastet er:", resultat)
+'''
+
+
+
+'''
+class Planet:
+    def __init__(self, navn):
+        self.navn = navn
+        self.maaner = []  # Create an empty list to hold Maane objects for this planet
+
+    def legg_til_maane(self, maane_objekt):
+        self.maaner.append(maane_objekt)
+
+    def skriv_ut_maaner(self):
+        if not self.maaner:
+            print(f"{self.navn} har ingen måner.")
+        else:
+            print(f"{self.navn}s måner:")
+            for maane in self.maaner:
+                maanes_volum = maane.beregn_volum()
+                forhold = maanes_volum / self.beregn_volum()
+                print(f"{maane.navn}: Forhold til planetens volum: {forhold:.2f}")
+
+    def beregn_volum(self):
+        # Formelen for volumet av en sfære er (4/3) * π * radius^3
+        # Her antar vi at planeten har en radius på 1 for enkelhets skyld
+        volum = (4/3) * math.pi * 1**3
+        return volum
+'''
+
+
+class Bankkonto:
+    kontonummer = 0
+    saldo = 0
+
+    def __init__(self, saldo, fornavn, etternavn, inputSaldo):
+        self.inputSaldo = inputSaldo
+        self.saldo = saldo
+        self.navn = fornavn
+        self.etternavn = etternavn
+        self.kontonummer = Bankkonto.kontonummer
+        Bankkonto.kontonummer = Bankkonto.kontonummer + randint(343934, 1238908093)
+
+    def settPenger(self):
+        self.inputSaldo = int(input("Enter your amount: "))
+        self.saldo = self.saldo + self.inputSaldo
+        print(f"You inserted this ammount: {self.inputSaldo}")
+        return self.saldo
+    
+    def taUtPenger(self):
+        self.inputSaldo = int(input("Enter the ammount you want to take out of your bank account: "))
+        self.saldo = self.saldo - self.inputSaldo
+        if self.saldo < 0:
+            print("You are in debt")
+        print(f"You have taken out this ammount: {self.inputSaldo}")
+        return self.saldo
+
+class Sparekonto(Bankkonto):
+    uttak = 0
+
+    def __init__(self, saldo, fornavn, etternavn, inputSaldo):
+        super().__init__(saldo, fornavn, etternavn, inputSaldo)
+
+    def taUtPenger(self):
+        self.uttak = Sparekonto.uttak
+        if Sparekonto.uttak < 8:
+            self.inputSaldo = int(input("Enter the amount you want to take out of your savings account: "))
+            self.saldo -= self.inputSaldo
+            Sparekonto.uttak += 1
+            if self.saldo < 0:
+                print("You are in debt")
+            print(f"You have taken out this amount: {self.inputSaldo}")
+            print(f"You have {8 - Sparekonto.uttak} withdrawals left.")
+        else:
+            print("You have exceeded the maximum number of withdrawals (8).")
+        return self.saldo
+
+
+class BSUKonto(Bankkonto):
+    uttak = 0
+    def __init__(self, saldo, fornavn, etternavn, inputSaldo):
+        super().__init__(saldo, fornavn, etternavn, inputSaldo)
+    
+    def taUtPenger(self):
+        self.uttak = BSUKonto.uttak
+        if BSUKonto.uttak < 1 and self.inputSaldo == self.saldo:
+            self.inputSaldo = int(input("Enter the amount you want to take out of your BSU account: "))
+            self.saldo -= self.inputSaldo
+            BSUKonto.uttak += 1
+            if self.saldo < 0:
+                print("You are in debt")
+            print(f"You have taken out this amount: {self.inputSaldo}")
+            print(f"You have no withdrawals left.")
+        else:
+            print("You have exceeded the maximum number of withdrawals (1).")
+        return self.saldo
+        
+
+    
+# Example usage:
+
+bankKonto = Bankkonto(0, "John", "Doe", 0)
+
+spareKonto = Sparekonto(0, "John", "Doe", 0)
+
+bsuKonto = BSUKonto(0, "John", "Doe", 0)
+
+
+
+bankKonto.taUtPenger()
+print(f"New balance: {bankKonto.saldo}")
+
+
+spareKonto.taUtPenger()
+print(f"New balance: {spareKonto.saldo}")
+
+bsuKonto.taUtPenger()
+print(f"New balance: {bsuKonto.saldo}")
